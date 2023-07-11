@@ -7,14 +7,17 @@ class BooksController < ApplicationController
     @book = Book.new(post_image_params)
     @book.user_id = current_user.id
     @book.save
-    redirect_to books_path
+    redirect_to book_path(@book.id)
   end
 
   def index
+    @user = current_user
+    @book = Book.new
     @books = Book.all
   end
 
   def show
+    @user = current_user
     @book = Book.find(params[:id])
   end
 
