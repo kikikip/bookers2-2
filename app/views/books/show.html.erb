@@ -1,10 +1,10 @@
-<%= render 'books/list', user: @user, book: @book %>
+<%= render 'books/list', user: @user, book: @bookn %>
 
 <div>
   <p>title：<%= @book.title %></p>
   <p>Opinion：<%= @book.body %></p>
-  <p>投稿ユーザー画像：<%= image_tag @book.user.get_profile_image(100,100) %></p>
-  <p>ユーザーネーム：<%= @book.user.name %></p>
+  <%= image_tag @book.user.get_profile_image(100,100) %>
+  <%= @book.user.name %>
   <% if @book.user == current_user %>
     <%= link_to "Edit", edit_book_path(@book) %>
     <%= link_to "Destroy", book_path(@book), method: :delete %>
