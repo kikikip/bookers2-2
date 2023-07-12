@@ -1,13 +1,21 @@
-<%= render 'list', user: @user, book: @book %>
+<main>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'list', user: @user, book: @book %>
+      </div>
 
-<% @books.each do |book| %>
-  <div class="col-md-8 offset-md-1">
-    <h2>Books</h2>
-    <%= link_to book_path(book.id) do %>
-      <%= book.title %>
-    <% end %>
-    <p><%= image_tag book.user.get_profile_image(100,100) %></p>
-    <p>Opinion：<%= book.body %></p>
-    <p>ユーザーネーム：<%= book.user.name %></p>
+      <div class="col-md-8 offset-md-1">
+        <% @books.each do |book| %>
+          <h2>Books</h2>
+          <%= link_to book_path(book.id) do %>
+            <%= book.title %>
+          <% end %>
+          <p><%= image_tag book.user.get_profile_image(100,100) %></p>
+          <p>Opinion：<%= book.body %></p>
+          <p>ユーザーネーム：<%= book.user.name %></p>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+</main>
