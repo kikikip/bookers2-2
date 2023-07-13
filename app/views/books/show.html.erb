@@ -1,17 +1,42 @@
 <main>
-  <div class="col-md-3">
-    <%= render 'books/list', user: @user, book: @bookn %>
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'books/list', user: @user, book: @bookn %>
+      </div>
 
-  <div>
-    <%= image_tag @book.user.get_profile_image(100,100) %>
-    <p>title：<%= @book.title %></p>
-    <p>Opinion：<%= @book.body %></p>
-    <%= @book.user.name %>
-    <% if @book.user == current_user %>
-      <%= link_to "Edit", edit_book_path(@book) %>
-      <%= link_to "Destroy", book_path(@book), method: :delete %>
-    <% end %>
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to user_path(@user.id) do %>
+                  <%= image_tag @book.user.get_profile_image(100,100) %><br>
+                  <%= @book.user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to book_path(@book.id) do %>
+                  <%= @book.title %>
+                <% end %>
+              </td>
+              <td>
+                <%= @book.body %>
+              </td>
+              <% if @book.user == current_user %>
+                <td>
+                  <%= link_to "Edit", edit_book_path(@book), class: 'btn btn-sm btn-success edit_book_91048' %>
+                </td>
+                <td>
+                  <%= link_to "Destroy", book_path(@book), class: 'btn btn-sm btn-danger destroy_book_91048', method: :delete %>
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </main>
 
