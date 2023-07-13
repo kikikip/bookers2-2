@@ -1,12 +1,17 @@
-<%= render 'books/list', user: @user, book: @bookn %>
+<main>
+  <div class="col-md-3">
+    <%= render 'books/list', user: @user, book: @bookn %>
+  </div>
 
-<div>
-  <p>title：<%= @book.title %></p>
-  <p>Opinion：<%= @book.body %></p>
-  <%= image_tag @book.user.get_profile_image(100,100) %>
-  <%= @book.user.name %>
-  <% if @book.user == current_user %>
-    <%= link_to "Edit", edit_book_path(@book) %>
-    <%= link_to "Destroy", book_path(@book), method: :delete %>
-  <% end %>
-</div>
+  <div>
+    <%= image_tag @book.user.get_profile_image(100,100) %>
+    <p>title：<%= @book.title %></p>
+    <p>Opinion：<%= @book.body %></p>
+    <%= @book.user.name %>
+    <% if @book.user == current_user %>
+      <%= link_to "Edit", edit_book_path(@book) %>
+      <%= link_to "Destroy", book_path(@book), method: :delete %>
+    <% end %>
+  </div>
+</main>
+
