@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     user_path(resource)
   end
-  #新規登録用メッセージ Welcome! You have signed up successfully.
 
   def after_sign_out_path_for(resource)
     flash[:notice] = "Signed out successfully."
