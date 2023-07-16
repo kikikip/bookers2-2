@@ -43,8 +43,8 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @user = current_user
     @book = Book.find(params[:id])
+    @user = User.find(@book.user_id)
   end
 
   def destroy
